@@ -46,7 +46,7 @@ public class StringReviewTest
      * Tests countUpString()
      * Looks to see that all of the numbers are present.  Not very sophisitcated.
      */
-    @Test
+    @Test(timeout=2000)
     public void countUpStringTest()
     {
         OutputStream os;
@@ -83,7 +83,7 @@ public class StringReviewTest
      * Tests countDownString()
      * Looks to see that all of the numbers are present.  Not very sophisitcated.
      */
-    @Test
+    @Test(timeout=2000)
     public void countDownStringTest()
     {
         OutputStream os;
@@ -120,7 +120,7 @@ public class StringReviewTest
      * Tests cheerName()
      * Looks to see if the passed name is present.
      */
-    @Test
+    @Test(timeout=2000)
     public void cheerNameTest()
     {
         assertTrue( "cheerName failed: ", StringReview.cheerName("Avis").contains("Avis") );
@@ -130,7 +130,7 @@ public class StringReviewTest
      * Tests firstLast()
      * Looks to see if the returned name is exactly (first + " " + last)
      */
-    @Test
+    @Test(timeout=2000)
     public void firstLastTest()
     {
         assertEquals( "firstLast failed: ", "Mr. Avis", StringReview.firstLast("Mr.", "Avis") );
@@ -140,7 +140,7 @@ public class StringReviewTest
      * Tests firstFive()
      * Checks both a passing and error condition.
      */
-    @Test
+    @Test(timeout=2000)
     public void firstFiveTest()
     {
         assertEquals( "firstFive failed: ", "01234", StringReview.firstFive("0123456789") );
@@ -151,7 +151,7 @@ public class StringReviewTest
      * Tests cheerName()
      * 
      */
-    @Test
+    @Test(timeout=2000)
     public void middleStringTest()
     {
         assertEquals( "middleString failed: ", "2345", StringReview.middleString("0123456789", 2, 5) );
@@ -161,7 +161,7 @@ public class StringReviewTest
      * Tests cheerName()
      * Having a space or no space at the end is fine.
      */
-    @Test
+    @Test(timeout=2000)
     public void spaceLocationsTest()
     {
         assertEquals( "spaceLocations failed: ", "1 6 11 18", StringReview.spaceLocations("A very long string here.").trim() );
@@ -170,7 +170,7 @@ public class StringReviewTest
     /**
      * Tests the main() method to check for any output.
      */
-    @Test
+    @Test(timeout=2000)
     public void mainTest()
     {
         OutputStream os;
