@@ -41,7 +41,7 @@ public class StringReviewTest
     public void tearDown()
     {
     }
-    
+
     /**
      * Tests countUpString()
      * Looks to see that all of the numbers are present.  Not very sophisitcated.
@@ -53,7 +53,7 @@ public class StringReviewTest
         PrintStream origOut;
         InputStream origIn;
         String ls;
-        
+
         origIn = System.in;
         origOut = System.out;
 
@@ -61,7 +61,7 @@ public class StringReviewTest
         PrintStream ps = new PrintStream(os);
         System.setOut(ps);
         ls = System.getProperty("line.separator");
-        
+
         int max = 5;
         boolean passed = true;
         StringReview.countUpString( max );
@@ -74,11 +74,11 @@ public class StringReviewTest
             }
         }
         assertTrue( "countUpString failed: ", passed );
-        
+
         System.setOut(origOut);
         System.setIn(origIn);
     }
-    
+
     /**
      * Tests countDownString()
      * Looks to see that all of the numbers are present.  Not very sophisitcated.
@@ -90,7 +90,7 @@ public class StringReviewTest
         PrintStream origOut;
         InputStream origIn;
         String ls;
-        
+
         origIn = System.in;
         origOut = System.out;
 
@@ -98,7 +98,7 @@ public class StringReviewTest
         PrintStream ps = new PrintStream(os);
         System.setOut(ps);
         ls = System.getProperty("line.separator");
-        
+
         int max = 5;
         boolean passed = true;
         StringReview.countDownString( max );
@@ -111,11 +111,11 @@ public class StringReviewTest
             }
         }
         assertTrue( "countDownString failed: ", passed );
-        
+
         System.setOut(origOut);
         System.setIn(origIn);
     }
-    
+
     /**
      * Tests cheerName()
      * Looks to see if the passed name is present.
@@ -125,7 +125,7 @@ public class StringReviewTest
     {
         assertTrue( "cheerName failed: ", StringReview.cheerName("Avis").contains("Avis") );
     }
-    
+
     /**
      * Tests firstLast()
      * Looks to see if the returned name is exactly (first + " " + last)
@@ -135,6 +135,7 @@ public class StringReviewTest
     {
         assertEquals( "firstLast failed: ", "Mr. Avis", StringReview.firstLast("Mr.", "Avis") );
     }
+
     /**
      * Tests firstFive()
      * Checks both a passing and error condition.
@@ -145,7 +146,7 @@ public class StringReviewTest
         assertEquals( "firstFive failed: ", "01234", StringReview.firstFive("0123456789") );
         assertEquals( "firstFive failed: ", "ERROR", StringReview.firstFive("012").toUpperCase() );
     }
-    
+
     /**
      * Tests cheerName()
      * 
@@ -155,7 +156,7 @@ public class StringReviewTest
     {
         assertEquals( "middleString failed: ", "2345", StringReview.middleString("0123456789", 2, 5) );
     }
-    
+
     /**
      * Tests cheerName()
      * Having a space or no space at the end is fine.
@@ -164,5 +165,35 @@ public class StringReviewTest
     public void spaceLocationsTest()
     {
         assertEquals( "spaceLocations failed: ", "1 6 11 18", StringReview.spaceLocations("A very long string here.").trim() );
+    }
+
+    /**
+     * Tests the main() method to check for any output.
+     */
+    @Test
+    public void mainTest()
+    {
+        OutputStream os;
+        PrintStream origOut;
+        InputStream origIn;
+        String ls;
+
+        origIn = System.in;
+        origOut = System.out;
+
+        os = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(os);
+        System.setOut(ps);
+        ls = System.getProperty("line.separator");
+
+        int max = 5;
+        boolean passed = true;
+        String[] args = {};
+        StringReview.main( args );
+        String output = os.toString().trim();
+        assertTrue( "main method produced no output: ", output.length() > 0 );
+
+        System.setOut(origOut);
+        System.setIn(origIn);
     }
 }
